@@ -1,4 +1,4 @@
-name: Build Minecraft Mod
+name: Build Minecraft Mod (1.16.5)
 
 on:
   push:
@@ -13,11 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21
-        uses: actions/setup-java@v4
+      - name: Set up JDK 8
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
-          java-version: '21'
+          java-version: '8'
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -28,9 +28,10 @@ jobs:
       - name: Upload compiled JAR
         uses: actions/upload-artifact@v4
         with:
-          name: minecraft-mod-jar
+          name: minecraft-mod-1.16.5-jar
           path: |
             build/libs/*.jar
             !build/libs/*-sources.jar
             !build/libs/*-dev.jar
             !build/libs/*-slim.jar
+            
